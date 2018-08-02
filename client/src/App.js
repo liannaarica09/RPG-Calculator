@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import LoginPage from "../src/pages/LoginPage";
+import CreateChar from "../src/pages/CreateChar";
+import PlayScreen from "../src/pages/PlayScreen";
+import NoMatch from "../src/pages/NoMatch";
 import './App.css';
 class App extends Component {
 
