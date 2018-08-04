@@ -2,9 +2,9 @@ import React from 'react';
 
 class SystemItem extends React.Component {
 
-    componentDidMount() {
-        console.log(this.props.value);
-    }
+    // componentDidMount() {
+    //     console.log(this.props.value);
+    // }
 
     render() {
         return (
