@@ -1,1 +1,1 @@
-export { default } from "./systemItem";
+export { default } from "./SystemItem";
