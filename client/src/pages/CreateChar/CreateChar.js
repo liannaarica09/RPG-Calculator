@@ -13,6 +13,7 @@ class CreateChar extends React.Component {
         this.state = {
             charName: "",
             Vortex,
+            stuff: '',
             awareness: 1,
             ingenuity: 1,
             presence: 1,
@@ -59,6 +60,10 @@ class CreateChar extends React.Component {
         this.setState({ [field]: e.target.value })
     }
 
+    handleCharCreation = () => {
+        console.log(this.state);
+    }
+
 
     render() {
         if (!localStorage.getItem('currentSystem')) {
@@ -85,7 +90,9 @@ class CreateChar extends React.Component {
                         infinite: true,
                         dots: true
                     },
+                    // eslint-disable-next-line
                     breakpoint: 850,
+                    // eslint-disable-next-line
                     settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1,
@@ -104,7 +111,7 @@ class CreateChar extends React.Component {
                     <p>{`Skill Points ${this.state.skillPoints}`}</p>
                     <p>{`Story Points ${this.state.storyPoints}`}</p>
                 </div>
-                <form>
+                <form onSubmit={this.handleCharCreation}>
                     <div className="createHeader">
                         <p>Name</p>
                         <input type="text" value={this.state.charName} onChange={(e) => this.onChange(e, 'charName')} />
@@ -133,7 +140,7 @@ class CreateChar extends React.Component {
                         </div>
                         <div>
                             <h3>Stuff</h3>
-                            <input type="text" />
+                            <input type="text" value={this.state.stuff} onChange={(e) => this.onChange(e, 'stuff')} />
                             <FontAwesomeIcon icon={faPlusCircle} />
                         </div>
                         <div>

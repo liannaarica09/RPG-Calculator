@@ -18,13 +18,16 @@ class PlayScreen extends React.Component {
         }
     }
 
+    // componentDidMount() {
+    //     this.setState({ chars: chars });
+    // }
+
     handleSystemClick = system => {
         console.log(system);
         this.setState({ currentSystem: system }, function () {
             localStorage.setItem('currentSystem', system)
             console.log(this.state);
         });
-
     }
 
     handleCharChoice = (char) => {
