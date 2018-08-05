@@ -20,10 +20,9 @@ class LoginPage extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <div >
+                <div id="loginDiv">
                     <Login />
                 </div>
-                {/* <div><LeoLogin /></div> */}
             </React.Fragment>
         )
     }

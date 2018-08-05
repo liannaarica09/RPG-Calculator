@@ -5,7 +5,7 @@ import Header from "../../components/header";
 import systems from "../../systems.json";
 import SystemItem from "../../components/SystemItem";
 import DropItem from "../../components/DropItem";
-import CharSheet from "../../components/CharSheet";
+import { CharSheet, Attributes, Biodata, CharHeader, Skills, Stuff, Traits } from "../../components/CharSheet";
 
 class PlayScreen extends React.Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class PlayScreen extends React.Component {
             currentSystem: localStorage.getItem('currentSystem'),
             systems,
             chars: [{ name: 'Poppy', id: 1 }, { name: 'Mickey', id: 2 }, { name: 'Rose', id: 3 }, { name: 'Osgood', id: 4 }, { name: 'Ianto', id: 5 }],
-            character: ''
+            character: 'Ianto'
         }
     }
 
@@ -25,6 +25,13 @@ class PlayScreen extends React.Component {
             console.log(this.state);
         });
 
+    }
+
+    handleCharChoice = (char) => {
+        console.log(char);
+        this.setState({ character: char }, function () {
+            console.log(this.state.character);
+        });
     }
 
     render() {
@@ -51,13 +58,28 @@ class PlayScreen extends React.Component {
                                             id={chars.id}
                                             key={chars.id}
                                             name={chars.name}
+                                            onClick={this.handleCharChoice}
                                         />
                                     ))}
                                 </div>
                             </div>
                         </Header>
                         <div className="body">
-                            <CharSheet></CharSheet>
+                            {this.state.character ? (
+                                <CharSheet>
+                                    <CharHeader />
+                                    <Attributes />
+                                    <Skills />
+                                    <Biodata />
+                                    <Traits />
+                                    <Stuff />
+                                </CharSheet>
+                            ) : (
+                                    <div>
+                                        <h1>No Characters Found</h1>
+                                        <h3>Click 'Character' above and select 'New Character' to make one.</h3>
+                                    </div>
+                                )}
                         </div>
                     </div>
                 ) : (

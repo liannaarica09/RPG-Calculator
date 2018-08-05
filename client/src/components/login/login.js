@@ -94,7 +94,7 @@ class Login extends React.Component {
         }
 
         return (
-            <div>
+            <div id="loginCentered">
                 <div>
                     <div onClick={(e) => this.toggleStateOnSelection(e, 'login')} id="login-form-link">Login</div>
                     <div onClick={(e) => this.toggleStateOnSelection(e, 'register')} id="register-form-link">Register</div>
