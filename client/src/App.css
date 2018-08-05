@@ -132,6 +132,7 @@ header {
 .dropdown {
   position: relative;
   display: inline-block;
+  cursor: pointer;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -165,10 +166,12 @@ header {
 
 .dropdown:hover .dropdown-content {
   display: block;
+  cursor: pointer;
 }
 
 .dropdown:active .dropdown-content {
   display: block;
+  cursor: pointer;
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
