@@ -156,7 +156,8 @@ header {
 
 /* Change color of dropdown links on hover */
 
-.dropItem:hover {
+.dropItem:hover,
+.dropItem:active {
   background-color: #ddd;
 }
 
@@ -166,8 +167,16 @@ header {
   display: block;
 }
 
+.dropdown:active .dropdown-content {
+  display: block;
+}
+
 /* Change the background color of the dropdown button when the dropdown content is shown */
 
 .dropdown:hover .dropbtn {
+  color: #3e8e41;
+}
+
+.dropdown:active .dropbtn {
   color: #3e8e41;
 }
