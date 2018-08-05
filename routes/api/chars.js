@@ -7,8 +7,9 @@ router.route("/")
     .post(charController.create);
 
 // Matches with "/api/chars/:id"
-router
-    .route("/:id")
-    .get(charController.findById)
-    .put(charController.update)
-    .delete(charController.remove);
+// router
+//     .route("/:id")
+//     .get(charController.findById)
+//     .put(charController.update)
+//     .delete(charController.remove);
+module.exports = router;
