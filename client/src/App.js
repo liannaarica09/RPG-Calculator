@@ -5,6 +5,14 @@ import CreateChar from "../src/pages/CreateChar";
 import PlayScreen from "../src/pages/PlayScreen";
 import NoMatch from "../src/pages/NoMatch";
 import './App.css';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinusSquare, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faMinusSquare);
+library.add(faPlusSquare);
+
 class App extends Component {
 
   render() {

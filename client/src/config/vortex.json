@@ -1,0 +1,77 @@
+{
+    "Attributes": [{
+            "name": "Awareness",
+            "id": "vAttr1"
+        },
+        {
+            "name": "Coordination",
+            "id": "vAttr2"
+        },
+        {
+            "name": "Ingenuity",
+            "id": "vAttr3"
+        },
+        {
+            "name": "Presence",
+            "id": "vAttr4"
+        },
+        {
+            "name": "Resolve",
+            "id": "vAttr5"
+        },
+        {
+            "name": "Strength",
+            "id": "vAttr6"
+        }
+    ],
+    "Skills": [{
+            "name": "Athletics",
+            "id": "vSki1"
+        },
+        {
+            "name": "Convince",
+            "id": "vSki2"
+        },
+        {
+            "name": "Craft",
+            "id": "vSki3"
+        },
+        {
+            "name": "Fight",
+            "id": "vSki4"
+        },
+        {
+            "name": "Knowledge",
+            "id": "vSki5"
+        },
+        {
+            "name": "Marksman",
+            "id": "vSki6"
+        },
+        {
+            "name": "Medicine",
+            "id": "vSki7"
+        },
+        {
+            "name": "Science",
+            "id": "vSki8"
+        },
+        {
+            "name": "Subterfuge",
+            "id": "vSki9"
+        },
+        {
+            "name": "Survival",
+            "id": "vSki10"
+        },
+        {
+            "name": "Technology",
+            "id": "vSki11"
+        },
+        {
+            "name": "Transport",
+            "id": "vSki12"
+        }
+    ]
+
+}

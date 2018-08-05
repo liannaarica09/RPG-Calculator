@@ -14,7 +14,7 @@ class PlayScreen extends React.Component {
             currentSystem: localStorage.getItem('currentSystem'),
             systems,
             chars: [{ name: 'Poppy', id: 1 }, { name: 'Mickey', id: 2 }, { name: 'Rose', id: 3 }, { name: 'Osgood', id: 4 }, { name: 'Ianto', id: 5 }],
-            character: 'Ianto'
+            character: ''
         }
     }
 
@@ -32,6 +32,10 @@ class PlayScreen extends React.Component {
         this.setState({ character: char }, function () {
             console.log(this.state.character);
         });
+    }
+
+    handleNew = () => {
+        this.props.history.push("/create");
     }
 
     render() {
@@ -61,6 +65,7 @@ class PlayScreen extends React.Component {
                                             onClick={this.handleCharChoice}
                                         />
                                     ))}
+                                    <div className="dropItem" onClick={this.handleNew}>New Character</div>
                                 </div>
                             </div>
                         </Header>

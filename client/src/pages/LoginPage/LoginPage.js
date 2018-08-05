@@ -1,5 +1,6 @@
 import React from "react";
 import Login from "../../components/login";
+import { Redirect } from "react-router-dom";
 
 class LoginPage extends React.Component {
     state = {
@@ -18,6 +19,10 @@ class LoginPage extends React.Component {
     };
 
     render() {
+        if (localStorage.getItem('userName')) {
+            return <Redirect to={'/play'} />
+        }
+
         return (
             <React.Fragment>
                 <div id="loginDiv">

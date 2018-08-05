@@ -7,6 +7,7 @@ class Drop extends React.Component {
                 <button class="dropbtn">Dropdown</button>
                 <div class="dropdown-content">
                     {this.props.children}
+                    <div className="dropItem">New Character</div>
                 </div>
             </div>
         );
