@@ -12,6 +12,10 @@
   grid-template-columns: 1fr 1fr;
 }
 
+.whiteText {
+  color: white;
+}
+
 /* Header */
 
 header {
@@ -62,8 +66,20 @@ header {
   grid-template-rows: auto;
 }
 
-.body {
+.center {
   text-align: center;
+}
+
+svg {
+  margin: 0 auto;
+}
+
+.slide {
+  box-sizing: border-box;
+  background-color: lightslategray;
+  margin: 10px;
+  padding: 5px;
+  min-height: 100vh;
 }
 
 /* Create Page */

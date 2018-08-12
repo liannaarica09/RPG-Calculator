@@ -1,77 +1,626 @@
 {
     "Attributes": [{
-            "name": "Awareness",
-            "id": "vAttr1"
+            "name": "awareness",
+            "value": 1
+        }, {
+            "name": "coordination",
+            "value": 1
         },
         {
-            "name": "Coordination",
-            "id": "vAttr2"
+            "name": "ingenuity",
+            "value": 1
         },
         {
-            "name": "Ingenuity",
-            "id": "vAttr3"
+            "name": "presence",
+            "value": 1
         },
         {
-            "name": "Presence",
-            "id": "vAttr4"
+            "name": "resolve",
+            "value": 1
         },
         {
-            "name": "Resolve",
-            "id": "vAttr5"
-        },
-        {
-            "name": "Strength",
-            "id": "vAttr6"
+            "name": "strength",
+            "value": 1
         }
     ],
     "Skills": [{
-            "name": "Athletics",
-            "id": "vSki1"
+            "name": "athletics",
+            "value": 0
         },
         {
-            "name": "Convince",
-            "id": "vSki2"
+            "name": "medicine",
+            "value": 0
         },
         {
-            "name": "Craft",
-            "id": "vSki3"
+            "name": "convince",
+            "value": 0
         },
         {
-            "name": "Fight",
-            "id": "vSki4"
+            "name": "science",
+            "value": 0
+        }, {
+            "name": "craft",
+            "value": 0
         },
         {
-            "name": "Knowledge",
-            "id": "vSki5"
+            "name": "subterfuge",
+            "value": 0
         },
         {
-            "name": "Marksman",
-            "id": "vSki6"
+            "name": "fighting",
+            "value": 0
         },
         {
-            "name": "Medicine",
-            "id": "vSki7"
+            "name": "survival",
+            "value": 0
         },
         {
-            "name": "Science",
-            "id": "vSki8"
+            "name": "knowledge",
+            "value": 0
         },
         {
-            "name": "Subterfuge",
-            "id": "vSki9"
+            "name": "technology",
+            "value": 0
         },
         {
-            "name": "Survival",
-            "id": "vSki10"
+            "name": "marksman",
+            "value": 0
         },
         {
-            "name": "Technology",
-            "id": "vSki11"
-        },
-        {
-            "name": "Transport",
-            "id": "vSki12"
+            "name": "transport",
+            "value": 0
         }
-    ]
+    ],
+    "Traits": [{
+            "name": "Animal Friendship",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Arrogant",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Attractive",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Authority",
+            "type": ["Minor Good", "Major Good"]
+        },
+        {
+            "name": "Biochemical Genius",
+            "type": ["Major Good"]
+        },
+        {
+            "name": "Boffin",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Brave",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Charming",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Code Breaker",
+            "type": ["Minor Good"],
+            "UNIT": true
+        },
+        {
+            "name": "Crack Shot",
+            "type": ["Minor Good"],
+            "UNIT": true
+        },
+        {
+            "name": "Cutting Edge Technology",
+            "type": ["Minor Good"],
+            "UNIT": true
+        },
+        {
+            "name": "Empathic",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Face in the Crowd",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Fast Healing",
+            "type": ["Major Good", "Special Good"],
+            "cost": {
+                "charPoints": "-6",
+                "storyPoints": "-6"
+            }
+        },
+        {
+            "name": "Five Rounds Rapid",
+            "type": ["Major Good"],
+            "UNIT": true
+        },
+        {
+            "name": "Friends",
+            "type": ["Minor Good", "Major Good"]
+        },
+        {
+            "name": "Hot Shot",
+            "type": ["Minor Good"],
+            "UNIT": true
+        },
+        {
+            "name": "Hypnosis",
+            "type": ["Minor Good", "Major Good", "Special Good"],
+            "cost": {
+                "charPoints": -3
+            }
+        },
+        {
+            "name": "Indomitable",
+            "type": ["Major Good"]
+        },
+        {
+            "name": "Keen Senses",
+            "type": ["Minor Good", "Major Good"]
+        },
+        {
+            "name": "Lucky",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Military Rank",
+            "type": ["Minor Good", "Major Good"],
+            "multiple": true
+        },
+        {
+            "name": "Owed Favour",
+            "type": ["Minor Good", "Major Good"],
+            "multiple": true
+        },
+        {
+            "name": "Photographic Memory",
+            "type": ["Major Good"]
+        },
+        {
+            "name": "Psychic Training",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Quick Reflexes",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Resourceful Pockets",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Run for your Life!",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Reverse the Polarity of the Neutron Flow",
+            "type": ["Major Good"]
+        },
+        {
+            "name": "Screamer!",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Sense of Direction",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Sharpshooter",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Technically Adept",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Time Traveller",
+            "type": ["Minor Good", "Major Good"],
+            "multiple": true
+        },
+        {
+            "name": "Tough",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Voice of Authority",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Wealthy",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Adversary",
+            "type": ["Minor Bad", "Major Bad"],
+            "multiple": true
+        },
+        {
+            "name": "Amnesia",
+            "type": ["Minor Bad", "Major Bad"]
+        },
+        {
+            "name": "Argumentative",
+            "type": ["Minor Bad"]
+        },
+        {
+            "name": "By the Book",
+            "type": ["Minor Bad"]
+        },
+        {
+            "name": "Clumsy",
+            "type": ["Minor Bad"]
+        },
+        {
+            "name": "Code of Conduct",
+            "type": ["Minor Bad", "Major Bad"]
+        },
+        {
+            "name": "Cowardly",
+            "type": ["Minor Bad"]
+        },
+        {
+            "name": "Dark Secret",
+            "type": ["Minor Bad", "Major Bad"]
+        },
+        {
+            "name": "Dependency",
+            "type": ["Minor Bad", "Major Bad"]
+        },
+        {
+            "name": "Distinctive",
+            "type": ["Minor Bad"]
+        },
+        {
+            "name": "Eccentric",
+            "type": ["Minor Bad", "Major Bad"]
+        },
+        {
+            "name": "Forgetful",
+            "type": ["Minor Bad"]
+        },
+        {
+            "name": "Impaired Senses",
+            "type": ["Minor Bad", "Major Bad"],
+            "multiple": true
+        },
+        {
+            "name": "Impulsive",
+            "type": ["Minor Bad"]
+        },
+        {
+            "name": "Insatiable Curiosity",
+            "type": ["Minor Bad"]
+        },
+        {
+            "name": "Last of my Kind",
+            "type": ["Minor Bad"],
+            "needs": "Alien"
+        },
+        {
+            "name": "Obligation",
+            "type": ["Minor Bad", "Major Bad"]
+        },
+        {
+            "name": "Obsession",
+            "type": ["Minor Bad", "Major Bad"]
+        },
+        {
+            "name": "Outcast",
+            "type": ["Minor Bad"]
+        },
+        {
+            "name": "Owes Favour",
+            "type": ["Minor Bad", "Major Bad"],
+            "multiple": true
+        },
+        {
+            "name": "Phobia",
+            "type": ["Minor Bad"],
+            "multiple": true
+        },
+        {
+            "name": "Selfish",
+            "type": ["Minor Bad"]
+        },
+        {
+            "name": "Slow Reflexes",
+            "type": ["Minor Bad", "Major Bad"]
+        },
+        {
+            "name": "Technically Inept",
+            "type": ["Minor Bad"]
+        },
+        {
+            "name": "Unadventurous",
+            "type": ["Minor Bad", "Major Bad"]
+        },
+        {
+            "name": "Unattractive",
+            "type": ["Minor Bad"]
+        },
+        {
+            "name": "Unlucky",
+            "type": ["Minor Bad"]
+        },
+        {
+            "name": "Wanted",
+            "type": ["Minor Bad", "Major Bad"]
+        },
+        {
+            "name": "Weakness",
+            "type": ["Minor Bad", "Major Bad"],
+            "multiple": true
+        },
+        {
+            "name": "Alien",
+            "type": ["Special Good"],
+            "cost": {
+                "charPoints": "-2"
+            }
+        },
+        {
+            "name": "Alien Appearance",
+            "type": ["Special Bad"],
+            "cost": {
+                "charcter": "+2",
+                "charPoints": "+4"
+            },
+            "needs": "Alien"
+        },
+        {
+            "name": "Clairvoyance",
+            "type": ["Special Good"],
+            "cost": {
+                "charPoints": "-2"
+            },
+            "needs": "Psychic"
+        }, {
+            "name": "Cyborg",
+            "type": ["Special Good"],
+            "cost": {
+                "character1": "-1",
+                "charPoints": "-3"
+            }
+        },
+        {
+            "name": "Experienced",
+            "type": ["Special Good"],
+            "cost": {
+                "storyPoints": "-3",
+                "skillPoints": "+2",
+                "charPoints": "+2"
+            },
+            "multiple": true
+        },
+        {
+            "name": "Fear Factor",
+            "type": ["Special Good"],
+            "multiple": true,
+            "cost": {
+                "charPoints": "-1"
+            }
+        },
+        {
+            "name": "Feel the Turn of the Universe",
+            "type": ["Special Good"],
+            "cost": {
+                "charPoints": "-1"
+            }
+        },
+        {
+            "name": "Immortal",
+            "type": ["Major Good", "Special Good"],
+            "cost": {
+                "charPoints": "-5",
+                "storyPoints": "-8"
+            }
+        },
+        {
+            "name": "Inexperienced",
+            "type": ["Special Bad"],
+            "cost": {
+                "charPoints": "-2",
+                "skillPoints": "-2",
+                "storyPoints": "+3"
+            }
 
+        },
+        {
+            "name": "Precognition",
+            "type": ["Special Good"],
+            "cost": {
+                "charPoints": "-1"
+            },
+            "needs": "Psychic"
+        },
+        {
+            "name": "Psychic",
+            "type": ["Special Good"],
+            "cost": {
+                "character1": "-1",
+                "charPoints": "-2"
+            }
+        },
+        {
+            "name": "Robot",
+            "type": ["Special Good"],
+            "cost": {
+                "character1": "-2",
+                "charPoints": "-4"
+            }
+        },
+        {
+            "name": "Telekinesis",
+            "type": ["Special Good"],
+            "cost": {
+                "charPoints": "-2"
+            },
+            "needs": "Psychic"
+        },
+        {
+            "name": "Telepathy",
+            "type": ["Special Good"],
+            "cost": {
+                "charPoints": "-1"
+            },
+            "needs": "Psychic"
+        },
+        {
+            "name": "Time Agent",
+            "type": ["Special Good"],
+            "cost": {
+                "charPoints": "-2",
+                "storyPoints": "-2"
+            },
+            "trait": "Vortex"
+        },
+        {
+            "name": "Time Lord",
+            "type": ["Special Good"],
+            "cost": {
+                "charPoints": "-2",
+                "storyPoints": "-4"
+            },
+            "atribute": "Ingenuity +2",
+            "trait": ["Vortex", "Feel the Turn of the Universe"]
+        },
+        {
+            "name": "Time Lord (Experienced)",
+            "type": ["Special Good"],
+            "needs": "Time Lord",
+            "cost": {
+                "storyPoints": 4,
+                "charPoints": -1
+            },
+            "multiple": true
+        },
+        {
+            "name": "UNIT Veteran",
+            "type": ["Special Good"],
+            "cost": {
+                "charPoints": -4
+            }
+        },
+        {
+            "name": "Vortex",
+            "type": ["Special Good"],
+            "cost": {
+                "charPoints": -1
+            }
+        },
+        {
+            "name": "Additional Limbs",
+            "type": ["Minor Good"],
+            "needs": "Alien",
+            "multiple": true
+        },
+        {
+            "name": "Alien Senses",
+            "type": ["Minor Good"],
+            "needs": "Alien"
+        },
+        {
+            "name": "Armour",
+            "type": ["Minor Good", "Major Good", "Special Good"],
+            "cost": {
+                "charPoints": -1
+            },
+            "needs": "Alien"
+        },
+        {
+            "name": "Climbing",
+            "type": ["Minor Good", "Major Good"],
+            "needs": "Alien"
+        },
+        {
+            "name": "Enslaved",
+            "type": ["Major Bad"],
+            "needs": "Alien"
+        },
+        {
+            "name": "Environmental",
+            "type": ["Minor Good", "Major Good"],
+            "needs": "Alien"
+        },
+        {
+            "name": "Fear Factor",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Flight",
+            "type": ["Minor Good", "Major Good"],
+            "needs": "Alien"
+        },
+        {
+            "name": "Immortal",
+            "needs": "Alien",
+            "multiple": true,
+            "type": ["Major Good"]
+        },
+        {
+            "name": "Immunity",
+            "type": ["Major Good"],
+            "needs": "Alien"
+        },
+        {
+            "name": "Natural Weapons",
+            "needs": "Alien",
+            "type": ["Minor Good", "Major Good"]
+        },
+        {
+            "name": "Networked",
+            "needs": "Alien",
+            "type": ["Minor Good", "Major Good"]
+        },
+        {
+            "name": "Possess",
+            "needs": "Alien",
+            "type": ["Special Good"]
+        },
+        {
+            "name": "Replication",
+            "needs": "Alien",
+            "type": ["Major Good"]
+        },
+        {
+            "name": "Resistance",
+            "needs": "Alien",
+            "type": ["Minor Good"]
+        },
+        {
+            "name": "Shapeshift",
+            "needs": "Alien",
+            "type": ["Minor Good", "Major Good", "Special Good"],
+            "cost": {
+                "charPoints": -4
+            }
+        },
+        {
+            "name": "Special",
+            "needs": "Alien",
+            "type": ["Special Good"],
+            "cost": {
+                "charPoints": -3
+            }
+        },
+        {
+            "name": "Teleport",
+            "type": ["Major Good"],
+            "needs": "Alien"
+        },
+        {
+            "name": "Alien Vortex",
+            "type": ["Special Good"],
+            "needs": "Alien",
+            "cost": {
+                "charPoints": -8
+            }
+        }
+
+    ]
 }

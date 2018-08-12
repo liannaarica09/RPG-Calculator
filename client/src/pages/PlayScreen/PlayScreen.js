@@ -72,7 +72,7 @@ class PlayScreen extends React.Component {
                                 </div>
                             </div>
                         </Header>
-                        <div className="body">
+                        <div className="center">
                             {this.state.character ? (
                                 <CharSheet>
                                     <CharHeader />
