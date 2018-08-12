@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 class Checkbox extends Component {
 
-   
+
     render() {
         return (
             <div>
@@ -13,6 +13,7 @@ class Checkbox extends Component {
                         <input
                             type="checkbox"
                             name={type}
+                            disabled={this.props.disabled}
                             parent={this.props.name}
                             parent-index={this.props.index}
                             onChange={this.props.handleChange}

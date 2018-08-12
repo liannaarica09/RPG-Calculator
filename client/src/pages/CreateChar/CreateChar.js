@@ -268,6 +268,7 @@ class CreateChar extends React.Component {
                                         <div className="whiteText">{trait.name}</div>
                                         <div className="thirds">
                                             <Checkbox
+                                                disabled={trait.disabled}
                                                 index={index}
                                                 cat={'Traits'}
                                                 name={trait.name}
