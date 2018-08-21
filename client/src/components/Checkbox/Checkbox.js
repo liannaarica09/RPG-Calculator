@@ -1,27 +1,15 @@
-import React, { Component } from 'react';
-// import Checks from './checks';
+import React from 'react';
 
-class Checkbox extends Component {
+class Checkbox extends React.Component {
 
+    // componentDidMount() {
+    //     console.log(this.props.children);
+    // }
 
     render() {
         return (
-            <div>
-                {this.props.type.map((type, index) => (
-                    <div key={index.toString()}>
-                        <label>{type}</label>
-                        <input
-                            type="checkbox"
-                            name={type}
-                            disabled={this.props.disabled}
-                            parent={this.props.name}
-                            parent-index={this.props.index}
-                            onChange={this.props.handleChange}
-                        />
-                    </div>
-                ))}
-            </div>
-        );
+            <div>{this.props.children}</div>
+        )
     }
 }
 

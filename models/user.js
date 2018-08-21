@@ -9,7 +9,7 @@ const UserSchema = new Schema({
     chars: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Chars"
+            ref: "Char"
         }
     ]
 });

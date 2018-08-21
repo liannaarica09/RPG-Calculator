@@ -3,7 +3,8 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import Vortex from '../../config/vortex.json'
 import Incrementer from "../../components/Incrementer/Incrementer";
-import Checkbox from "../../components/Checkbox"
+import Checkbox from "../../components/Checkbox";
+import Checks from "../../components/Checks";
 import { FontAwesomeIcon } from "../../../../node_modules/@fortawesome/react-fontawesome";
 import { faPlusCircle } from "../../../../node_modules/@fortawesome/free-solid-svg-icons";
 import Slider from "react-slick";
@@ -14,6 +15,12 @@ class CreateChar extends React.Component {
         super(props);
         this.state = {
             charName: "",
+            gameSystem: "Vortex",
+            stuff: [],
+            goal: "",
+            personality: "",
+            background: "",
+            tempStuff: "",
             Vortex
         }
     }
@@ -45,20 +52,23 @@ class CreateChar extends React.Component {
     }
 
     handleIncrement = (i, cat, op) => {
-        console.log(i);
         console.log(cat);
-        console.log(op);
+
         let vortex = this.state.Vortex;
 
         if (cat === 'Attributes') {
             switch (op) {
                 case '+':
+                    console.log(vortex.Attributes[i].value);
                     vortex.Attributes[i].value = vortex.Attributes[i].value + 1;
                     this.setState({ charPoints: this.state.charPoints - 1 });
+                    console.log(vortex.Attributes[i].value);
                     break;
                 case '-':
+                    console.log(vortex.Attributes[i].value);
                     vortex.Attributes[i].value = vortex.Attributes[i].value - 1;
                     this.setState({ charPoints: this.state.charPoints + 1 });
+                    console.log(vortex.Attributes[i].value);
                     break;
                 default:
                     break;
@@ -67,14 +77,16 @@ class CreateChar extends React.Component {
         if (cat === 'Skills') {
             switch (op) {
                 case '+':
-                    console.log("case +");
+                    console.log(vortex.Skills[i].value);
                     vortex.Skills[i].value = vortex.Skills[i].value + 1;
                     this.setState({ skillPoints: this.state.skillPoints - 1 });
+                    console.log(vortex.Skills[i].value);
                     break;
                 case '-':
-                    console.log("case -");
+                    console.log(vortex.Skills[i].value);
                     vortex.Skills[i].value = vortex.Skills[i].value - 1;
                     this.setState({ skillPoints: this.state.skillPoints + 1 });
+                    console.log(vortex.Skills[i].value);
                     break;
                 default:
                     break;
@@ -87,14 +99,21 @@ class CreateChar extends React.Component {
     handleCharCreation = (event) => {
         event.preventDefault();
 
-        axios.post('api/auth/register', {
-            username: this.state.username,
-            email: this.state.email,
-            password: this.state.password,
-            bio: this.state.bio,
-            image: this.choseImage ? this.image : this.defaultImage
+        axios.post('/api/chars', {
+            name: this.state.charName,
+            attributes: this.state.Vortex.Attributes,
+            skills: this.state.Vortex.Skills,
+            traits: this.state.Vortex.Traits,
+            stuff: this.state.stuff,
+            goal: this.state.goal,
+            personality: this.state.personality,
+            background: this.state.background,
+            user: localStorage.getItem('userName'),
+            gameSystem: this.state.gameSystem,
+            gMaster: "liannaarica09"
+            // image: this.choseImage ? this.image : this.defaultImage
         }).then(res => {
-            console.log(res.data);
+            console.log(res.config.data);
         })
     }
 
@@ -102,17 +121,18 @@ class CreateChar extends React.Component {
 
         console.log(event.target);
 
+        let vortex = this.state.Vortex;
         const name = event.target.name;
         const value = event.target.checked;
         const parentIndex = event.target.getAttribute('parent-index');
-        console.log(parentIndex);
-
-        console.log(name);
-        console.log(value);
 
         this.setState({
             [name]: value
         });
+
+        if (name === "Alien" || name === "Psychic" || name === "Time Lord") {
+            console.log(name);
+        }
 
         if (name === "Minor Good") {
             if (value === true) {
@@ -144,7 +164,7 @@ class CreateChar extends React.Component {
                     charPoints: this.state.charPoints + 2
                 })
             }
-        } else if (name === "Major Good") {
+        } else if (name === "Major Bad") {
             if (value === true) {
                 this.setState({
                     charPoints: this.state.charPoints + 2
@@ -172,6 +192,19 @@ class CreateChar extends React.Component {
                 console.log("No cost available");
             }
         }
+        vortex.Traits[parentIndex].charHas = value;
+        this.setState({ Vortex: vortex });
+        console.log(this.state);
+    }
+
+    addStuff = () => {
+        let tempArray = this.state.stuff;
+        console.log(tempArray);
+        tempArray.push(this.state.tempStuff);
+        console.log(tempArray);
+        this.setState({
+            stuff: tempArray
+        })
     }
 
     render() {
@@ -263,39 +296,62 @@ class CreateChar extends React.Component {
                             <div className="slide">
                                 <h3>Traits</h3>
 
-                                {this.state.Vortex.Traits.map((trait, index) => (
-                                    <div key={index.toString()}>
-                                        <div className="whiteText">{trait.name}</div>
-                                        <div className="thirds">
+                                <div>
+                                    {this.state.Vortex.Traits.map((trait, index) => {
+                                        return (
                                             <Checkbox
-                                                disabled={trait.disabled}
-                                                index={index}
-                                                cat={'Traits'}
+                                                key={trait.name + index}
                                                 name={trait.name}
-                                                type={trait.type}
+                                                needs={trait.needs}
+                                                disabled={trait.disabled}
                                                 cost={trait.cost}
-                                                handleChange={this.handleCheck} />
-                                        </div>
-                                    </div>
-                                ))}
+                                                handleCheck={this.handleCheck}>
+
+                                                <label className="whiteText">{trait.name}</label>
+                                                {trait.type.map((type, index) => {
+                                                    return (
+                                                        <div key={type.name + index.toString() + trait.name}>
+                                                            <label>{type}</label>
+                                                            <Checks
+                                                                key={type + index.toString() + trait.name}
+                                                                index={index}
+                                                                needs={trait.needs}
+                                                                cat={'Traits'}
+                                                                parent={trait.name}
+                                                                name={type}
+                                                                cost={trait.cost}
+                                                                handleChange={this.handleCheck} />
+                                                        </div>)
+                                                })}
+                                            </Checkbox>
+                                        )
+                                    })}
+                                </div>
                             </div>
                         </div>
                         <div>
                             <div className="slide">
                                 <h3>Stuff</h3>
-                                <input type="text" value={this.state.stuff} onChange={(e) => this.onChange(e, 'stuff')} />
-                                <FontAwesomeIcon icon={faPlusCircle} />
+                                <input type="text" value={this.state.tempStuff} onChange={(e) => this.onChange(e, 'tempStuff')} />
+                                <FontAwesomeIcon icon={faPlusCircle} onClick={this.addStuff} />
+                                {this.state.stuff.map((thing, index) => {
+                                    return (
+                                        <div
+                                            key={thing + index.toString()}
+                                        >{thing}</div>
+                                    )
+                                })}
                             </div>
                         </div>
                         <div>
                             <div className="slide">
                                 <h3>Biodata</h3>
                                 <p>Personal Goal</p>
-                                <textarea name="goal" id="goal" cols="30" rows="10"></textarea>
+                                <textarea name="goal" id="goal" cols="30" rows="10" onChange={(e) => this.onChange(e, 'goal')}></textarea>
                                 <p>Personality</p>
-                                <textarea name="personality" id="personality" cols="30" rows="10"></textarea>
+                                <textarea name="personality" id="personality" cols="30" rows="10" onChange={(e) => this.onChange(e, 'personality')}></textarea>
                                 <p>Background</p>
-                                <textarea name="background" id="background" cols="30" rows="10"></textarea>
+                                <textarea name="background" id="background" cols="30" rows="10" onChange={(e) => this.onChange(e, 'background')}></textarea>
                             </div>
                         </div>
                     </Slider>
@@ -306,9 +362,9 @@ class CreateChar extends React.Component {
                             </button>
                     </div>
                 </form>
-            </div >
+            </div>
         )
     }
-}
+};
 
 export default CreateChar;

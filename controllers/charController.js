@@ -18,7 +18,13 @@ module.exports = {
     create: function (req, res) {
         db.Char
             .create(req.body)
-            .then(dbModel => res.json(dbModel))
+            .then(dbModle => {
+                console.log(dbModle.user);
+                console.log(dbModle._id);
+                db.User.findOneAndUpdate({ userName: dbModle.user }, { $push: { chars: dbModle._id } }, { new: true })
+                    .then(dbUser => console.log(dbUser));
+            })
+            .then(dbModle => { res.json(dbModle) })
             .catch(err => res.status(422).json(err));
     },
     update: function (req, res) {
