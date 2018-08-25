@@ -28,10 +28,15 @@ class PlayScreen extends React.Component {
                 userName: this.state.player
             }
         }).then(res => {
-            console.log(res.data);
+            console.log(res.data.chars);
+            let chars = [];
+            for (let i = 0; i < res.data.chars.length; i++) {
+                console.log(res.data.chars[i].name);
+                chars.push(res.data.chars[i].name);
+            }
+            console.log(chars);
+            this.setState({ chars: chars });
         })
-
-        // this.setState({ chars: chars });
     }
 
     handleSystemClick = system => {
@@ -72,11 +77,11 @@ class PlayScreen extends React.Component {
                             <div className="dropdown">
                                 <h1 className="dropbtn">{this.state.character ? (this.state.character) : "Character"}</h1>
                                 <div className="dropdown-content">
-                                    {this.state.chars.map(chars => (
+                                    {this.state.chars.map((char, index) => (
                                         <DropItem
-                                            id={chars.id}
-                                            key={chars.id}
-                                            name={chars.name}
+                                            id={index}
+                                            key={index}
+                                            name={char}
                                             onClick={this.handleCharChoice}
                                         />
                                     ))}

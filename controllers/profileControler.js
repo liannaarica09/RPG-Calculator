@@ -13,7 +13,7 @@ module.exports = {
         console.log(req.query);
         db.User
             .findOne(req.query)
-            .populate("chars")
+            .populate('chars')
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
