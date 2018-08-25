@@ -132,6 +132,7 @@ class CreateChar extends React.Component {
 
         if (name === "Alien" || name === "Psychic" || name === "Time Lord") {
             console.log(name);
+            alert("this trait is not available yet.");
         }
 
         if (name === "Minor Good") {
@@ -190,11 +191,12 @@ class CreateChar extends React.Component {
                 });
             } else {
                 console.log("No cost available");
+                alert("this trait is not available yet.");
             }
         }
         vortex.Traits[parentIndex].charHas = value;
         this.setState({ Vortex: vortex });
-        console.log(this.state);
+        console.log(this.state.Vortex.Traits[parentIndex]);
     }
 
     addStuff = () => {

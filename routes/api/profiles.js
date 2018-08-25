@@ -1,2 +1,9 @@
 const router = require("express").Router();
-const charController = require("../../controllers/charController");
+const profileControler = require("../../controllers/profileControler");
+
+// Matches with "/api/users"
+router.route("/")
+    .get(profileControler.findOne)
+    .put(profileControler.update);
+
+module.exports = router;

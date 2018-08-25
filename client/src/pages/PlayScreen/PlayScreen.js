@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import SystemSelector from "../../components/SystemSelector";
 import Header from "../../components/header";
@@ -12,15 +13,26 @@ class PlayScreen extends React.Component {
         super(props);
         this.state = {
             currentSystem: localStorage.getItem('currentSystem'),
+            player: localStorage.getItem('userName'),
             systems,
-            chars: [{ name: 'Poppy', id: 1 }, { name: 'Mickey', id: 2 }, { name: 'Rose', id: 3 }, { name: 'Osgood', id: 4 }, { name: 'Ianto', id: 5 }],
+            chars: [],
             character: ''
         }
     }
 
-    // componentDidMount() {
-    //     this.setState({ chars: chars });
-    // }
+    componentDidMount() {
+        console.log(this.state.player);
+
+        axios.get('/api/users', {
+            params: {
+                userName: this.state.player
+            }
+        }).then(res => {
+            console.log(res.data);
+        })
+
+        // this.setState({ chars: chars });
+    }
 
     handleSystemClick = system => {
         console.log(system);
