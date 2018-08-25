@@ -5,8 +5,11 @@ export class Biodata extends Component {
         return (
             <div className="biodata">
                 <p>Personal Goal</p>
+                <p>{this.props.goal}</p>
                 <p>Personality</p>
+                <p>{this.props.personaliry}</p>
                 <p>Background</p>
+                <p>{this.props.background}</p>
             </div>
         );
     }

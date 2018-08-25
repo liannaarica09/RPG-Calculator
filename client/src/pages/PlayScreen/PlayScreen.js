@@ -31,13 +31,18 @@ class PlayScreen extends React.Component {
             console.log(res.data.chars);
             let chars = [];
             for (let i = 0; i < res.data.chars.length; i++) {
-                console.log(res.data.chars[i].name);
-                chars.push(res.data.chars[i].name);
-            }
+                let tName = res.data.chars[i].name;
+                let tId = res.data.chars[i]._id;
+                let tChar = {
+                    "name": tName,
+                    "id": tId
+                }
+                chars.push(tChar);
+            };
             console.log(chars);
             this.setState({ chars: chars });
         })
-    }
+    };
 
     handleSystemClick = system => {
         console.log(system);
@@ -45,18 +50,21 @@ class PlayScreen extends React.Component {
             localStorage.setItem('currentSystem', system)
             console.log(this.state);
         });
-    }
+    };
 
-    handleCharChoice = (char) => {
-        console.log(char);
-        this.setState({ character: char }, function () {
-            console.log(this.state.character);
-        });
-    }
+    handleCharChoice = (id) => {
+        axios.get('/api/chars/' + id)
+            .then(res => {
+                console.log(res.data);
+                this.setState({ character: res.data }, function () {
+                    console.log(this.state.character);
+                });
+            });
+    };
 
     handleNew = () => {
         this.props.history.push("/create");
-    }
+    };
 
     render() {
         const currentSystem = this.state.currentSystem;
@@ -71,18 +79,18 @@ class PlayScreen extends React.Component {
                     <div>
                         <Header
                             sysValue={this.state.currentSystem}
-                            charValue={this.state.character}
+                            charValue={this.state.character.name}
                             history={this.props.history}
                         >
                             <div className="dropdown">
-                                <h1 className="dropbtn">{this.state.character ? (this.state.character) : "Character"}</h1>
+                                <h1 className="dropbtn">{this.state.character ? (this.state.character.name) : "Character"}</h1>
                                 <div className="dropdown-content">
                                     {this.state.chars.map((char, index) => (
                                         <DropItem
-                                            id={index}
+                                            id={char.id}
                                             key={index}
-                                            name={char}
-                                            onClick={this.handleCharChoice}
+                                            name={char.name}
+                                            handleClick={this.handleCharChoice}
                                         />
                                     ))}
                                     <div className="dropItem" onClick={this.handleNew}>New Character</div>
@@ -92,10 +100,33 @@ class PlayScreen extends React.Component {
                         <div className="center">
                             {this.state.character ? (
                                 <CharSheet>
-                                    <CharHeader />
-                                    <Attributes />
-                                    <Skills />
-                                    <Biodata />
+                                    <CharHeader
+                                        char={this.state.character.name} />
+                                    <Attributes
+                                        awareness={this.state.character.attributes[0].value}
+                                        coordination={this.state.character.attributes[1].value}
+                                        ingenuity={this.state.character.attributes[2].value}
+                                        presence={this.state.character.attributes[3].value}
+                                        resolve={this.state.character.attributes[4].value}
+                                        strength={this.state.character.attributes[5].value} />
+                                    <Skills
+                                    athletics={this.state.character.skills[0].value}
+                                    medicine={this.state.character.skills[1].value}
+                                    convince={this.state.character.skills[2].value}
+                                    science={this.state.character.skills[3].value}
+                                    craft={this.state.character.skills[4].value}
+                                    subterfuge={this.state.character.skills[5].value}
+                                    figthing={this.state.character.skills[6].value}
+                                    survival={this.state.character.skills[7].value}
+                                    knowledge={this.state.character.skills[8].value}
+                                    technology={this.state.character.skills[9].value}
+                                    marksman={this.state.character.skills[10].value}
+                                    transport={this.state.character.skills[11].value} />
+                                    <Biodata 
+                                    goal={this.state.character.goal}
+                                    personality={this.state.character.personality}
+                                    background={this.state.character.background}
+                                    />
                                     <Traits />
                                     <Stuff />
                                 </CharSheet>
@@ -120,8 +151,8 @@ class PlayScreen extends React.Component {
                     )}
             </div>
         )
-    }
 
+    }
 }
 
 export default PlayScreen;

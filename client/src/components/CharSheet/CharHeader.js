@@ -5,8 +5,8 @@ export class CharHeader extends Component {
         return (
             <div className="charHeader">
                 <div>Doctor Who</div>
-                <div>Character</div>
-                <div>Story Points</div>
+                <div>{this.props.char}</div>
+                <div>Story Points 12</div>
             </div>
         );
     }
