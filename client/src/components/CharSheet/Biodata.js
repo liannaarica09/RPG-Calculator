@@ -7,7 +7,7 @@ export class Biodata extends Component {
                 <p>Personal Goal</p>
                 <p>{this.props.goal}</p>
                 <p>Personality</p>
-                <p>{this.props.personaliry}</p>
+                <p>{this.props.personality}</p>
                 <p>Background</p>
                 <p>{this.props.background}</p>
             </div>

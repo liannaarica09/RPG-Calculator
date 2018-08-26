@@ -19,7 +19,10 @@ class PlayScreen extends React.Component {
             character: '',
             traits: [],
             attributes: [],
-            skills: []
+            skills: [],
+            goal: "",
+            personality: "",
+            background: ""
         }
     }
 
@@ -62,7 +65,7 @@ class PlayScreen extends React.Component {
                 console.log(res.data.traits.length);
 
                 let tempTrait = [];
-                for (let j = 0; j < 104; j++) {
+                for (let j = 0; j < res.data.traits.length; j++) {
                     console.log("index " + j);
                     console.log(res.data.traits[j]);
                     console.log(res.data.traits[j].charHas);
