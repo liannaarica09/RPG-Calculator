@@ -17,7 +17,9 @@ class PlayScreen extends React.Component {
             systems,
             chars: [],
             character: '',
-            traits: []
+            traits: [],
+            attributes: [],
+            skills: []
         }
     }
 
@@ -56,19 +58,31 @@ class PlayScreen extends React.Component {
     handleCharChoice = (id) => {
         axios.get('/api/chars/' + id)
             .then(res => {
-                console.log(res.data);
-                this.setState({ character: res.data }, function () {
-                    console.log(this.state.character);
-                    let tempChar = this.state.character;
-                    let tempTrait = [];
-                    for (let a = 0; a < this.state.character.traits.length; a++) {
-                        if (this.state.character.traits[a].charHas) {
-                            console.log(this.state.character.traits[a].name);
-                            tempTrait.push(this.state.character.traits[a]);
-                        }
-                        tempChar.traits = tempTrait;
-                        this.setState({ character: tempChar });
+                console.log(res.data.traits);
+                console.log(res.data.traits.length);
+
+                let tempTrait = [];
+                for (let j = 0; j < 104; j++) {
+                    console.log("index " + j);
+                    console.log(res.data.traits[j]);
+                    console.log(res.data.traits[j].charHas);
+                    if (res.data.traits[j].charHas) {
+                        console.log(res.data.traits[j].name);
+                        tempTrait.push(res.data.traits[j]);
+                        console.log(tempTrait);
                     }
+                }
+
+                this.setState({
+                    character: res.data.name,
+                    traits: tempTrait,
+                    skills: res.data.skills,
+                    attributes: res.data.attributes,
+                    goal: res.data.goal,
+                    personality: res.data.personality,
+                    background: res.data.background
+                }, function () {
+                    console.log(this.state.traits);
                 });
             });
     };
@@ -90,11 +104,11 @@ class PlayScreen extends React.Component {
                     <div>
                         <Header
                             sysValue={this.state.currentSystem}
-                            charValue={this.state.character.name}
+                            charValue={this.state.character}
                             history={this.props.history}
                         >
                             <div className="dropdown">
-                                <h1 className="dropbtn">{this.state.character ? (this.state.character.name) : "Character"}</h1>
+                                <h1 className="dropbtn">{this.state.character ? (this.state.character) : "Character"}</h1>
                                 <div className="dropdown-content">
                                     {this.state.chars.map((char, index) => (
                                         <DropItem
@@ -112,43 +126,43 @@ class PlayScreen extends React.Component {
                             {this.state.character ? (
                                 <CharSheet>
                                     <CharHeader
-                                        char={this.state.character.name} />
+                                        char={this.state.character} />
                                     <Attributes
-                                        awareness={this.state.character.attributes[0].value}
-                                        coordination={this.state.character.attributes[1].value}
-                                        ingenuity={this.state.character.attributes[2].value}
-                                        presence={this.state.character.attributes[3].value}
-                                        resolve={this.state.character.attributes[4].value}
-                                        strength={this.state.character.attributes[5].value} />
+                                        awareness={this.state.attributes[0].value}
+                                        coordination={this.state.attributes[1].value}
+                                        ingenuity={this.state.attributes[2].value}
+                                        presence={this.state.attributes[3].value}
+                                        resolve={this.state.attributes[4].value}
+                                        strength={this.state.attributes[5].value} />
                                     <Skills
-                                        athletics={this.state.character.skills[0].value}
-                                        medicine={this.state.character.skills[1].value}
-                                        convince={this.state.character.skills[2].value}
-                                        science={this.state.character.skills[3].value}
-                                        craft={this.state.character.skills[4].value}
-                                        subterfuge={this.state.character.skills[5].value}
-                                        figthing={this.state.character.skills[6].value}
-                                        survival={this.state.character.skills[7].value}
-                                        knowledge={this.state.character.skills[8].value}
-                                        technology={this.state.character.skills[9].value}
-                                        marksman={this.state.character.skills[10].value}
-                                        transport={this.state.character.skills[11].value} />
+                                        athletics={this.state.skills[0].value}
+                                        medicine={this.state.skills[1].value}
+                                        convince={this.state.skills[2].value}
+                                        science={this.state.skills[3].value}
+                                        craft={this.state.skills[4].value}
+                                        subterfuge={this.state.skills[5].value}
+                                        figthing={this.state.skills[6].value}
+                                        survival={this.state.skills[7].value}
+                                        knowledge={this.state.skills[8].value}
+                                        technology={this.state.skills[9].value}
+                                        marksman={this.state.skills[10].value}
+                                        transport={this.state.skills[11].value} />
                                     <Biodata
-                                        goal={this.state.character.goal}
-                                        personality={this.state.character.personality}
-                                        background={this.state.character.background}
+                                        goal={this.state.goal}
+                                        personality={this.state.personality}
+                                        background={this.state.background}
                                     />
-                                    <div id="traits">
-                                        {this.state.character.traits.map((trait, index) => {
+                                    <Traits className="traits">
+                                        {this.state.traits.map((trait, index) => {
                                             return (
-                                                <Traits
+                                                <div
                                                     id={trait.name}
                                                     key={trait.name + index}
                                                     name={trait.name}
-                                                />
+                                                >{trait.name}</div>
                                             )
                                         })}
-                                    </div>
+                                    </Traits>
                                     <Stuff />
                                 </CharSheet>
                             ) : (

@@ -130,6 +130,18 @@ class CreateChar extends React.Component {
             [name]: value
         });
 
+        console.log(parentIndex);
+        console.log(vortex.Traits[parentIndex].name);
+        console.log(vortex.Traits[parentIndex].charHas);
+        vortex.Traits[parentIndex].charHas = value;
+        console.log(vortex.Traits[parentIndex].charHas);
+        this.setState({
+            Vortex: vortex
+        }, function () {
+            console.log(this.state.Vortex.Traits[parentIndex].name);
+            console.log(this.state.Vortex.Traits[parentIndex].charHas);
+        });
+
         if (name === "Alien" || name === "Psychic" || name === "Time Lord") {
             console.log(name);
             alert("this trait is not available yet.");
@@ -194,9 +206,6 @@ class CreateChar extends React.Component {
                 alert("this trait is not available yet.");
             }
         }
-        vortex.Traits[parentIndex].charHas = value;
-        this.setState({ Vortex: vortex });
-        console.log(this.state.Vortex.Traits[parentIndex]);
     }
 
     addStuff = () => {
@@ -310,16 +319,16 @@ class CreateChar extends React.Component {
                                                 handleCheck={this.handleCheck}>
 
                                                 <label className="whiteText">{trait.name}</label>
-                                                {trait.type.map((type, index) => {
+                                                {trait.type.map((type, i) => {
                                                     return (
-                                                        <div key={type.name + index.toString() + trait.name}>
+                                                        <div key={type + i.toString() + trait.name}>
                                                             <label>{type}</label>
                                                             <Checks
-                                                                key={type + index.toString() + trait.name}
-                                                                index={index}
+                                                                index={i}
                                                                 needs={trait.needs}
                                                                 cat={'Traits'}
                                                                 parent={trait.name}
+                                                                parentIndex={index}
                                                                 name={type}
                                                                 cost={trait.cost}
                                                                 handleChange={this.handleCheck} />

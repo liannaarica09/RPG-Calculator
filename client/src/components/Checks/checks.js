@@ -11,8 +11,8 @@ class Checks extends React.Component {
                 type="checkbox"
                 name={this.props.name}
                 disabled={this.props.disabled}
-                parent={this.props.name}
-                parent-index={this.props.index}
+                parent={this.props.parent}
+                parent-index={this.props.parentIndex}
                 onChange={this.props.handleChange}
             />)
     }
