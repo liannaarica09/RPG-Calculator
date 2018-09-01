@@ -113,7 +113,8 @@ class CreateChar extends React.Component {
             gMaster: "liannaarica09"
             // image: this.choseImage ? this.image : this.defaultImage
         }).then(res => {
-            console.log(res.config.data);
+            console.log(JSON.parse(res.config.data));
+            this.props.history.push("/play");
         })
     }
 

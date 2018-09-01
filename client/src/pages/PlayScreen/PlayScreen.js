@@ -144,7 +144,7 @@ class PlayScreen extends React.Component {
                                         science={this.state.skills[3].value}
                                         craft={this.state.skills[4].value}
                                         subterfuge={this.state.skills[5].value}
-                                        figthing={this.state.skills[6].value}
+                                        fighting={this.state.skills[6].value}
                                         survival={this.state.skills[7].value}
                                         knowledge={this.state.skills[8].value}
                                         technology={this.state.skills[9].value}
